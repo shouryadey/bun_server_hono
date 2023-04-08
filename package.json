@@ -1,0 +1,25 @@
+{
+  "version": "1.0.87",
+  "name": "bun_server_hono",
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "dependencies": {
+    "esbuild": "^0.17.15",
+    "hono": "^2.2.5",
+    "node": "14.19.0",
+    "typescript": "^5.0.3"
+  },
+  "scripts": {
+    "start": "bun run build/index.js",
+    "dev": "bun run --hot src/index.ts",
+	"start_v2":"bun run index.js",
+    "build": "bun bun src/index.ts  && bun node_modules.bun > index.js",
+    "build_v2": "esbuild --bundle src/index.ts --format=esm --platform=node --outfile=build/index.js",
+    "deploy_build": "sudo pm2 start ecosystem.config.js --no-daemon"
+  },
+  "module": "src/index.js",
+  "bun": {
+    "alwaysBundle": ["./src/index.ts"]
+  }
+}
